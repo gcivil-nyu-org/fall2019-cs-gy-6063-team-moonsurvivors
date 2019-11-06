@@ -9,7 +9,7 @@ class DashboardView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         all_data = SimulatedData.objects.all().order_by("-created_at")
-        return render(request, self.template_name, {"all_data": all_data})
+        return render(request, self.template_name, {"all_data": all_data, "xy": "80, 400 90, 500"})
 
 
 class DashboardLiveView(TemplateView):

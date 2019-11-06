@@ -1,12 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"  http-equiv="refresh" content="5; URL=/dashboard/"/>
+    <meta charset="UTF-8"  content="5; URL=/dashboard/"/>
     <title>Dashboard</title>
 </head>
 <body>
 <h1>Dashboard</h1>
 <h3>The Simulated Data for each data packet sent is shown:</h3>
+<div>
+    <style>body {
+        font-family: 'Open Sans', sans-serif;
+      }
+      
+      .graph .labels.x-labels {
+        text-anchor: middle;
+      }
+      
+      .graph .labels.y-labels {
+        text-anchor: end;
+      }
+      
+      
+      .graph {
+        height: 500px;
+        width: 800px;
+      }
+      
+      .graph .grid {
+        stroke: #ccc;
+        stroke-dasharray: 0;
+        stroke-width: 1;
+      }
+      
+      .labels {
+        font-size: 13px;
+      }
+      
+      .label-title {
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 12px;
+        fill: black;
+      }
+      
+      .data {
+        fill: red;
+        stroke-width: 1; 
+      }</style>
+
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="graph" aria-labelledby="title" role="img">
+    <g class="grid x-grid" id="xGrid">
+      <line x1="90" x2="90" y1="5" y2="371"></line>
+    </g>
+    <g class="grid y-grid" id="yGrid">
+      <line x1="90" x2="705" y1="370" y2="370"></line>
+    </g>
+      <g class="labels x-labels">
+      <text x="100" y="400">1</text>
+      <text x="246" y="400">2</text>
+      <text x="392" y="400">3</text>
+      <text x="538" y="400">4</text>
+      <text x="684" y="400">5</text>
+      <text x="400" y="440" class="label-title">TIME</text>
+    </g>
+    <g class="labels y-labels">
+      <text x="80" y="15">15</text>
+      <text x="80" y="131">10</text>
+      <text x="80" y="248">5</text>
+      <text x="80" y="373">0</text>
+      <text x="50" y="200" class="label-title">Speed</text>
+    </g>
+    <g class="data" data-setname="Our first data set"> 
+      <polyline
+         fill="none"
+         stroke="#0074d9"
+         stroke-width="3"
+         points="{{ xy }}"/>
+      
+    <!--   
+      circles 
+      <circle cx="90" cy="192" data-value="7.2" r="4"></circle>
+      <circle cx="240" cy="141" data-value="8.1" r="4"></circle>
+      <circle cx="388" cy="179" data-value="7.7" r="4"></circle>
+      <circle cx="531" cy="200" data-value="6.8" r="4"></circle>
+      <circle cx="677" cy="104" data-value="6.7" r="4"></circle> -->
+    </g>
+    </svg>
+    
+    
+</div>
 <div>
     <table id="main_dash" style="border: 1px solid black">
         The simulated data for each data package is shown below:<br><br>
