@@ -15,7 +15,7 @@
         <div class="col-6 justify-content-center">
             <h1>Simulating Mock Data</h1>
             {% if form %}
-                <form method="POST" action="" id="SimulatorForm">
+                <form method="POST" action="" id="TemperatureForm">
                     {% csrf_token %}
                     {% load crispy_forms_tags %}
                     {{ form|crispy }}

@@ -10,7 +10,6 @@ def create_simulated_data():
         temperature=TEST_TEMP, created_at=datetime.datetime.now()
     )
 
-
 class TestSimulatedData(TestCase):
     def setUp(self):
         create_simulated_data()

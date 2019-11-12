@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.urls import path, include
 from django.contrib import admin
-from mercury.resources import SimulatedDataResource
+# TODO ask about the api
+from mercury.resources import TemperatureSensorResource
 
-mercury_api = SimulatedDataResource()
+mercury_api = TemperatureSensorResource()
 
 urlpatterns = [
     path("admin/", admin.site.urls),
