@@ -202,5 +202,168 @@ $(function () {
 });
 
 // function for acceleration sensor
+$(function () {
+
+    let buttonpressed;
+    let interval_var;
+    // Submit post on submit
+    $('.submitbutton_accel').click(function () {
+        buttonpressed = $(this).attr('name')
+    });
+    // TODO changee form
+    $('#AccelerationForm').on('submit', function (event) {
+        event.preventDefault();
+        if (buttonpressed == "Continuous") {
+            console.log("Continuous Submission button was pressed.");
+            create_post_accel();
+            interval_var = setInterval(create_post_accel, 2000);
+        } else if (buttonpressed == "Once") {
+            console.log("Submit Once button was pressed.");
+            if (interval_var) {
+                clearInterval(interval_var);
+            }
+            create_post_accel();
+        } else if (buttonpressed == "Stop") {
+            console.log("Stopping continuous submission.");
+            if (interval_var) {
+                clearInterval(interval_var);
+            }
+        }
+    });
+
+    // AJAX for posting
+    function create_post_accel() {
+        console.log("Entered create_post() function.");
+        $.ajax({
+            // TODO
+            url: "", // the endpoint
+            type: "POST", // http method
+            data: {
+                created_at_accel: $('#post-created-at_accel').val(),
+                acceleration_x: $('#post-acceleration-X').val(),
+                acceleration_y: $('#post-acceleration-Y').val(),
+                acceleration_z: $('#post-acceleration-Z').val(),
+
+            }, // data sent with the post request
+
+            // handle a successful response
+            success: function () {
+                generateValues();
+                console.log("POSTing was successful."); // another sanity check
+            },
+
+            // handle a non-successful response
+            error: function (xhr, errmsg, err) {
+                $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: " + errmsg +
+                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            }
+        });
+    }
+
+    // Processes the form data and assigns the value to corresponding fields in the UI
+    function generateValues() {
+        let acceleration_x = parseFloat($('#post-acceleration-X').val());
+        let acceleration_y = parseFloat($('#post-acceleration-Y').val());
+        let acceleration_z = parseFloat($('#post-acceleration-Z').val());
+
+        $('#post-created-at_accel').val(getDateTimenow());
+        $('#post-acceleration-X').val(acceleration_x + getRandomNumber(-5,5));
+        $('#post-acceleration-Y').val(acceleration_y + getRandomNumber(-5,5));
+        $('#post-acceleration-Z').val(acceleration_z + getRandomNumber(-5,5));
+    }
+
+    // This function returns current date time in the format "yyyy-mm-dd hh:min:ss"
+    function getDateTimenow(){
+        var now = new Date();
+        var yyyy = now.getFullYear();
+        var mm = ("0" + (now.getMonth() + 1)).slice(-2);
+        var dd = ("0" + now.getDate()).slice(-2);
+        var hours = ("0" + now.getHours()).slice(-2);
+        var minutes = ("0" + now.getMinutes()).slice(-2);
+        var seconds = ("0" + now.getSeconds()).slice(-2);
+        var curr_date = yyyy + '-' + mm + '-' + dd;
+        var curr_time = hours + ':' + minutes + ':' + seconds;
+        return curr_date + " " + curr_time;
+    }
+
+    //This function returns next sensor value, also makes sure that the value is in between 0 and 100
+    function getNextValue(sensorValue, min, max){
+        let MAX_VALUE = 100;
+        let MIN_VALUE = 0;
+        if((sensorValue-MIN_VALUE)<Math.abs(min)){
+            max = max-min;
+            min = 0;
+        }
+        else if((MAX_VALUE-sensorValue)<Math.abs(max)){
+            max = 0;
+        }
+        nextSensorValue = sensorValue + getRandomNumber(min,max);
+        return nextSensorValue;
+    }
+
+    //This function returns random number between min(inclusive) and max(exclusive)
+    function getRandomNumber(min,max){
+        let rand_num = Math.random()*(max-min)+min;
+        let rounded = rand_num.toFixed(2);
+        return parseFloat(rounded);
+    }
+
+
+    // This function gets cookie with a given name
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    var csrftoken = getCookie('csrftoken');
+
+    /*
+    The functions below will create a header with csrftoken
+    */
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+
+    function sameOrigin(url) {
+        // test that a given url is a same-origin URL
+        // url could be relative or scheme relative or absolute
+        var host = document.location.host; // host + port
+        var protocol = document.location.protocol;
+        var sr_origin = '//' + host;
+        var origin = protocol + sr_origin;
+        // Allow absolute or scheme relative URLs to same origin
+        return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+            (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+            // or any other URL that isn't scheme relative or absolute i.e relative.
+            !(/^(\/\/|http:|https:).*/.test(url));
+    }
+
+    $.ajaxSetup({
+        beforeSend: function (xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
+                // Send the token to same-origin, relative URLs only.
+                // Send the token only if the method warrants CSRF protection
+                // Using the CSRFToken value acquired earlier
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+});
+
+
 
 

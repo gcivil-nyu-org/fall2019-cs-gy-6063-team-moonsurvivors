@@ -2,33 +2,98 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import HttpResponse
 
-from ..forms import TemperatureForm
-from mercury.models import TemperatureSensor
+from ..forms import TemperatureForm, AccelerationForm
+from mercury.models import TemperatureSensor, AccelerationSensor
 import datetime
 
 
-class TemperatureView(TemplateView):
+# class TemperatureView(TemplateView):
+#     template_name = "simulator.html"
+#
+#     def post(self, request, *args, **kwargs):
+#         """Used by AJAX method in the simulator.js file to save data
+#         from the simulator UI."""
+#         post_created_at = request.POST.get("created_at")
+#         post_temperature = request.POST.get("temperature")
+#
+#         temp_data = TemperatureSensor(
+#             created_at=post_created_at,
+#             temperature=post_temperature,
+#         )
+#         temp_data.save()
+#         return HttpResponse(status=201)
+#
+#     def get(self, request, *args, **kwargs):
+#         """This method will render the Simulator form when GET is used"""
+#         form = TemperatureForm(initial={"created_at": datetime.datetime.now()})
+#         return render(request, self.template_name, {"form": form})
+
+# class AccelerationView(TemplateView):
+#     template_name = "acceleration_sensor.html"
+#
+#     def post(self, request, *args, **kwargs):
+#         """Used by AJAX method in the simulator.js file to save data
+#         from the simulator UI."""
+#         post_created_at_accel = request.POST.get("created_at_accel")
+#         post_acceleration_x = request.POST.get("acceleration_x")
+#         post_acceleration_y = request.POST.get("acceleration_y")
+#         post_acceleration_z = request.POST.get("acceleration_z")
+#
+#         accel_data = AccelerationSensor(
+#             created_at_accel= post_created_at_accel,
+#             acceleration_x=post_acceleration_x,
+#             acceleration_y=post_acceleration_y,
+#             acceleration_z=post_acceleration_z,
+#         )
+#         accel_data.save()
+#         return HttpResponse(status=201)
+#
+#     def get(self, request, *args, **kwargs):
+#         """This method will render the Simulator form when GET is used"""
+#         form_accel = AccelerationForm(initial={"created_at_accel": datetime.datetime.now()})
+#         return render(request, self.template_name, {"form_accel": form_accel})
+
+class SimulatorView(TemplateView):
+    # template_name = "acceleration_sensor.html"
     template_name = "simulator.html"
 
     def post(self, request, *args, **kwargs):
         """Used by AJAX method in the simulator.js file to save data
         from the simulator UI."""
-        post_created_at = request.POST.get("created_at")
-        post_temperature = request.POST.get("temperature")
 
-        temp_data = TemperatureSensor(
-            created_at=post_created_at,
-            temperature=post_temperature,
-        )
-        temp_data.save()
+        if request.POST.get("acceleration_x"):
+            post_created_at_accel = request.POST.get("created_at_accel")
+            post_acceleration_x = request.POST.get("acceleration_x")
+            post_acceleration_y = request.POST.get("acceleration_y")
+            post_acceleration_z = request.POST.get("acceleration_z")
+
+            accel_data = AccelerationSensor(
+                created_at_accel=post_created_at_accel,
+                acceleration_x=post_acceleration_x,
+                acceleration_y=post_acceleration_y,
+                acceleration_z=post_acceleration_z,
+            )
+            accel_data.save()
+
+        else:
+            post_created_at = request.POST.get("created_at")
+            post_temperature = request.POST.get("temperature")
+
+            temp_data = TemperatureSensor(
+                created_at=post_created_at,
+                temperature=post_temperature,
+            )
+            temp_data.save()
+
         return HttpResponse(status=201)
 
     def get(self, request, *args, **kwargs):
         """This method will render the Simulator form when GET is used"""
         form = TemperatureForm(initial={"created_at": datetime.datetime.now()})
-        return render(request, self.template_name, {"form": form})
+        form_accel = AccelerationForm(initial={"created_at_accel": datetime.datetime.now()})
 
 
+        return render(request, self.template_name, {"form_accel": form_accel, "form":form})
 
 
 # class SimulatorView(TemplateView):

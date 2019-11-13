@@ -16,7 +16,7 @@ class AccelerationSensor(models.Model):
     potentially available in the future in the NYU Motorsports
     Racing vehicle."""
 
-    created_at = models.DateTimeField()
+    created_at_accel = models.DateTimeField()
 
     # Acceleration Panel, measured in meter/second
     acceleration_x = models.FloatField(default=0)

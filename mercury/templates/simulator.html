@@ -24,8 +24,24 @@
                     <input type="submit" class="submitbutton" name="Stop" value="Stop Submission">
                 </form>
             {% endif %}
+
+             <h1>Acceleration Sensor</h1>
+            {% if form_accel %}
+                <form method="POST" action="" id="AccelerationForm">
+                    {% csrf_token %}
+                    {% load crispy_forms_tags %}
+                    {{ form_accel|crispy }}
+                    <input type="submit" class="submitbutton_accel" name="Continuous" value="Continuous Submission">
+                    <input type="submit" class="submitbutton_accel" name="Once" value="Submit Once">
+                    <input type="submit" class="submitbutton_accel" name="Stop" value="Stop Submission">
+                </form>
+            {% endif %}
+
+
+
         </div>
     </div>
 </div>
+
 </body>
 </html>
