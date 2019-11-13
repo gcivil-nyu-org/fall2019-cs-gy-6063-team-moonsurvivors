@@ -1,5 +1,5 @@
 from django import forms
-from mercury.models import TemperatureSensor, AccelerationSensor,WheelSpeedSensor,SuspensionSensor
+from mercury.models import TemperatureSensor, AccelerationSensor,WheelSpeedSensor,SuspensionSensor, FuelLevelSensor
 
 # for our slider
 from django.forms.widgets import NumberInput
@@ -84,6 +84,21 @@ class SuspensionForm(forms.ModelForm):
                 attrs={"id": "post-suspension-bl", "required": True}
             )
         }
+
+
+class FuelLevelForm(forms.ModelForm):
+    class Meta:
+        model = FuelLevelSensor
+        fields = "__all__"
+        widgets = {
+            "created_at_fl": forms.DateTimeInput(
+                            attrs={"id": "post-created-at_fl", "required": True}
+                        ),
+            "current_fuel_level": forms.NumberInput(
+                attrs={"id": "post-current-fuel-level", "required": True}
+            )
+        }
+
 
 # class SimulatorForm(forms.ModelForm):
 #     class Meta:
