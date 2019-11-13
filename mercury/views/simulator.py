@@ -51,7 +51,7 @@ class SimulatorView(TemplateView):
             post_suspension_br = request.POST.get("suspension_br")
             post_suspension_bl = request.POST.get("suspension_bl")
 
-            ss_data = WheelSpeedSensor(
+            ss_data = SuspensionSensor(
                 created_at_ss=post_created_at_ss,
                 suspension_fr=post_suspension_fr,
                 suspension_fl=post_suspension_fl,
@@ -78,7 +78,7 @@ class SimulatorView(TemplateView):
         form = TemperatureForm(initial={"created_at": datetime.datetime.now()})
         form_accel= AccelerationForm(initial={"created_at_accel": datetime.datetime.now()})
         form_ws = WheelSpeedForm(initial={"created_at_ws": datetime.datetime.now()})
-        form_ss = WheelSpeedForm(initial={"created_at_ss": datetime.datetime.now()})
+        form_ss = SuspensionForm(initial={"created_at_ss": datetime.datetime.now()})
 
 
         context = {"form_ss": form_ss, "form_ws": form_ws, "form_accel": form_accel,"form":form}

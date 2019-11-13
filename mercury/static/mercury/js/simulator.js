@@ -562,14 +562,14 @@ $(function () {
     });
 
     // AJAX for posting
-    function create_post_ws() {
+    function create_post_ss() {
         console.log("Entered create_post_ss() suspension function.");
         $.ajax({
             // TODO
             url: "", // the endpoint
             type: "POST", // http method
             data: {
-                created_at_ws: $('#post-created-at_ss').val(),
+                created_at_ss: $('#post-created-at_ss').val(),
                 suspension_fr: $('#post-suspension-fr').val(),
                 suspension_fl: $('#post-suspension-fl').val(),
                 suspension_br: $('#post-suspension-br').val(),
