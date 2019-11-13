@@ -331,7 +331,6 @@ $(function () {
     $('.submitbutton_ws').click(function () {
         buttonpressed = $(this).attr('name')
     });
-    // TODO changee form
     $('#WheelSpeedForm').on('submit', function (event) {
         event.preventDefault();
         if (buttonpressed == "Continuous") {
@@ -356,7 +355,6 @@ $(function () {
     function create_post_ws() {
         console.log("Entered create_post_ws() function.");
         $.ajax({
-            // TODO
             url: "", // the endpoint
             type: "POST", // http method
             data: {
@@ -498,7 +496,7 @@ $(function () {
     $('.submitbutton_ss').click(function () {
         buttonpressed = $(this).attr('name')
     });
-    // TODO changee form
+
     $('#SuspensionForm').on('submit', function (event) {
         event.preventDefault();
         if (buttonpressed == "Continuous") {
@@ -523,7 +521,7 @@ $(function () {
     function create_post_ss() {
         console.log("Entered create_post_ss() suspension function.");
         $.ajax({
-            // TODO
+
             url: "", // the endpoint
             type: "POST", // http method
             data: {
@@ -664,7 +662,7 @@ $(function () {
     $('.submitbutton_fl').click(function () {
         buttonpressed = $(this).attr('name')
     });
-    // TODO changee form
+
     $('#FuelLevelForm').on('submit', function (event) {
         event.preventDefault();
         if (buttonpressed == "Continuous") {
@@ -689,7 +687,7 @@ $(function () {
     function create_post_fl() {
         console.log("Entered create_post_fl() fuel level function.");
         $.ajax({
-            // TODO
+
             url: "", // the endpoint
             type: "POST", // http method
             data: {

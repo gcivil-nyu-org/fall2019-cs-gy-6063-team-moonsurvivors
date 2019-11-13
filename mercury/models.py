@@ -24,7 +24,6 @@ class WheelSpeedSensor(models.Model):
     """This model represents the Wheel Speed sensors that we expect to
     potentially available in the future in the NYU Motorsports
     Racing vehicle."""
-
     created_at_ws = models.DateTimeField()
     # Wheel Speed Panel for each of the four wheels
     # measured in meter/second
