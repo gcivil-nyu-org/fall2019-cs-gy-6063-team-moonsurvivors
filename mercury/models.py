@@ -26,7 +26,6 @@ class WheelSpeedSensor(models.Model):
     Racing vehicle."""
 
     created_at_ws = models.DateTimeField()
-
     # Wheel Speed Panel for each of the four wheels
     # measured in meter/second
     wheel_speed_fr = models.FloatField(default=0)
@@ -53,7 +52,6 @@ class FuelLevelSensor(models.Model):
     Racing vehicle."""
 
     created_at_fl = models.DateTimeField()
-
     # Fuel Supply Panel
     # measured in liters
     current_fuel_level = models.FloatField(default=0)

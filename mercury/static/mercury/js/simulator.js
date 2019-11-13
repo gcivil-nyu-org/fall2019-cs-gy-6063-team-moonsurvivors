@@ -37,18 +37,6 @@ $(function () {
             data: {
                 created_at: $('#post-created-at').val(),
                 temperature: $('#post-temperature').val(),
-                // acceleration_x: $('#post-acceleration-X').val(),
-                // acceleration_y: $('#post-acceleration-Y').val(),
-                // acceleration_z: $('#post-acceleration-Z').val(),
-                // wheel_speed_fr: $('#post-wheel-speed-fr').val(),
-                // wheel_speed_fl: $('#post-wheel-speed-fl').val(),
-                // wheel_speed_br: $('#post-wheel-speed-br').val(),
-                // wheel_speed_bl: $('#post-wheel-speed-bl').val(),
-                // suspension_fr: $('#post-suspension-fr').val(),
-                // suspension_fl: $('#post-suspension-fl').val(),
-                // suspension_br: $('#post-suspension-br').val(),
-                // suspension_bl: $('#post-suspension-bl').val(),
-                // current_fuel_level: $('#post-current-fuel-level').val(),
 
             }, // data sent with the post request
 
@@ -71,38 +59,8 @@ $(function () {
     function generateValues() {
         let temperature = parseFloat($('#post-temperature').val());
 
-        // let acceleration_x = parseFloat($('#post-acceleration-X').val());
-        // let acceleration_y = parseFloat($('#post-acceleration-Y').val());
-        // let acceleration_z = parseFloat($('#post-acceleration-Z').val());
-        // let wheel_speed_fr = parseFloat($('#post-wheel-speed-fr').val());
-        // let wheel_speed_fl = parseFloat($('#post-wheel-speed-fl').val());
-        // let wheel_speed_br = parseFloat($('#post-wheel-speed-br').val());
-        // let wheel_speed_bl = parseFloat($('#post-wheel-speed-bl').val());
-        // let suspension_fr = parseFloat($('#post-suspension-fr').val());
-        // let suspension_fl = parseFloat($('#post-suspension-fl').val());
-        // let suspension_br = parseFloat($('#post-suspension-br').val());
-        // let suspension_bl = parseFloat($('#post-suspension-bl').val());
-        // let current_fuel_level = parseFloat($('#post-current-fuel-level').val());
-        // if(current_fuel_level <= 10){
-        //     current_fuel_level += 90;
-        // }
-        // else{
-        //     current_fuel_level -= getRandomNumber(0,5);
-        // }
         $('#post-created-at').val(getDateTimenow());
         $('#post-temperature').val(getNextValue(temperature,-5,5));
-        // $('#post-acceleration-X').val(acceleration_x + getRandomNumber(-5,5));
-        // $('#post-acceleration-Y').val(acceleration_y + getRandomNumber(-5,5));
-        // $('#post-acceleration-Z').val(acceleration_z + getRandomNumber(-5,5));
-        // $('#post-wheel-speed-fr').val(getNextValue(wheel_speed_fr,-5,5));
-        // $('#post-wheel-speed-fl').val(getNextValue(wheel_speed_fl,-5,5));
-        // $('#post-wheel-speed-br').val(getNextValue(wheel_speed_br,-5,5));
-        // $('#post-wheel-speed-bl').val(getNextValue(wheel_speed_bl,-5,5));
-        // $('#post-suspension-fr').val(getNextValue(suspension_fr,-5,5));
-        // $('#post-suspension-fl').val(getNextValue(suspension_fl,-5,5));
-        // $('#post-suspension-br').val(getNextValue(suspension_br,-5,5));
-        // $('#post-suspension-bl').val(getNextValue(suspension_bl,-5,5));
-        // $('#post-current-fuel-level').val(current_fuel_level);
 
     }
 
@@ -201,7 +159,7 @@ $(function () {
     });
 });
 
-// function for acceleration sensor
+// function for acceleration sensor//////////////////////////////////////////////////////////////////////
 $(function () {
 
     let buttonpressed;
