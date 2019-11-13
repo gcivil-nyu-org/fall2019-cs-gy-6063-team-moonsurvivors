@@ -36,6 +36,17 @@
                     <input type="submit" class="submitbutton_accel" name="Stop" value="Stop Submission">
                 </form>
             {% endif %}
+            <h1>Wheel Speed Sensor</h1>
+            {% if form_ws %}
+                <form method="POST" action="" id="WheelSpeedForm">
+                    {% csrf_token %}
+                    {% load crispy_forms_tags %}
+                    {{ form_ws|crispy }}
+                    <input type="submit" class="submitbutton_ws" name="Continuous" value="Continuous Submission">
+                    <input type="submit" class="submitbutton_ws" name="Once" value="Submit Once">
+                    <input type="submit" class="submitbutton_ws" name="Stop" value="Stop Submission">
+                </form>
+            {% endif %}
 
 
 

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import HttpResponse
 
-from ..forms import TemperatureForm, AccelerationForm
+from ..forms import TemperatureForm, AccelerationForm, WheelSpeedForm
 from mercury.models import TemperatureSensor, AccelerationSensor, WheelSpeedSensor
 import datetime
 
@@ -63,9 +63,12 @@ class SimulatorView(TemplateView):
         """This method will render the Simulator form when GET is used"""
         form = TemperatureForm(initial={"created_at": datetime.datetime.now()})
         form_accel = AccelerationForm(initial={"created_at_accel": datetime.datetime.now()})
+        form_ws = WheelSpeedForm(initial={"created_at_ws": datetime.datetime.now()})
+
+        context = { "form":form,"form_accel": form_accel,"form_ws ":form_ws}
 
 
-        return render(request, self.template_name, {"form_accel": form_accel, "form":form})
+        return render(request, self.template_name, context)
 
 
 # class SimulatorView(TemplateView):
