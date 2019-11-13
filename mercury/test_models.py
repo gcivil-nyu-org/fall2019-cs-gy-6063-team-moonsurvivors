@@ -26,7 +26,7 @@ class TestTemperatureSensor(TestCase):
         foo = TemperatureSensor.objects.get(temperature=TEST_TEMP)
         self.assertEqual(foo.temperature, TEST_TEMP)
 
-    def test_vehicle_temp_method(self):
-        foo = TemperatureSensor()
-        foo.temperature = 987
-        self.assertEqual(foo.temp(), 987)
+    # def test_vehicle_temp_method(self):
+    #     foo = TemperatureSensor()
+    #     foo.temperature = 987
+    #     self.assertEqual(foo.temp(), 987)
