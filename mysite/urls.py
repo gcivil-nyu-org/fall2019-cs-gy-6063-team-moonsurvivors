@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.urls import path, include
 from django.contrib import admin
+
 # TODO ask about the api
 from mercury.resources import TemperatureSensorResource
 

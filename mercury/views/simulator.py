@@ -2,9 +2,22 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import HttpResponse
 
-from ..forms import TemperatureForm, AccelerationForm, WheelSpeedForm, SuspensionForm, FuelLevelForm
-from mercury.models import TemperatureSensor, AccelerationSensor, WheelSpeedSensor, SuspensionSensor, FuelLevelSensor
+from ..forms import (
+    TemperatureForm,
+    AccelerationForm,
+    WheelSpeedForm,
+    SuspensionForm,
+    FuelLevelForm,
+)
+from mercury.models import (
+    TemperatureSensor,
+    AccelerationSensor,
+    WheelSpeedSensor,
+    SuspensionSensor,
+    FuelLevelSensor,
+)
 import datetime
+
 
 class SimulatorView(TemplateView):
     template_name = "simulator.html"
@@ -70,14 +83,12 @@ class SimulatorView(TemplateView):
             )
             fl_data.save()
 
-
         else:
             post_created_at = request.POST.get("created_at")
             post_temperature = request.POST.get("temperature")
 
             temp_data = TemperatureSensor(
-                created_at=post_created_at,
-                temperature=post_temperature,
+                created_at=post_created_at, temperature=post_temperature,
             )
             temp_data.save()
 
@@ -86,12 +97,19 @@ class SimulatorView(TemplateView):
     def get(self, request, *args, **kwargs):
         """This method will render the Simulator form when GET is used"""
         form = TemperatureForm(initial={"created_at": datetime.datetime.now()})
-        form_accel= AccelerationForm(initial={"created_at_accel": datetime.datetime.now()})
+        form_accel = AccelerationForm(
+            initial={"created_at_accel": datetime.datetime.now()}
+        )
         form_ws = WheelSpeedForm(initial={"created_at_ws": datetime.datetime.now()})
         form_ss = SuspensionForm(initial={"created_at_ss": datetime.datetime.now()})
         form_fl = FuelLevelForm(initial={"created_at_fl": datetime.datetime.now()})
 
-        context = {"form_fl": form_fl, "form_ss": form_ss, "form_ws": form_ws, "form_accel": form_accel,"form":form}
+        context = {
+            "form_fl": form_fl,
+            "form_ss": form_ss,
+            "form_ws": form_ws,
+            "form_accel": form_accel,
+            "form": form,
+        }
 
-        return render(request, self.template_name,context)
-
+        return render(request, self.template_name, context)

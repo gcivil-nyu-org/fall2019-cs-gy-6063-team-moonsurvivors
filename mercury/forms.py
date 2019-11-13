@@ -1,5 +1,11 @@
 from django import forms
-from mercury.models import TemperatureSensor, AccelerationSensor,WheelSpeedSensor,SuspensionSensor, FuelLevelSensor
+from mercury.models import (
+    TemperatureSensor,
+    AccelerationSensor,
+    WheelSpeedSensor,
+    SuspensionSensor,
+    FuelLevelSensor,
+)
 
 
 class TemperatureForm(forms.ModelForm):
@@ -11,8 +17,8 @@ class TemperatureForm(forms.ModelForm):
                 attrs={"id": "post-temperature", "required": True}
             ),
             "created_at": forms.DateTimeInput(
-                            attrs={"id": "post-created-at", "required": True}
-                        )
+                attrs={"id": "post-created-at", "required": True}
+            ),
         }
 
 
@@ -22,8 +28,8 @@ class AccelerationForm(forms.ModelForm):
         fields = "__all__"
         widgets = {
             "created_at_accel": forms.DateTimeInput(
-                            attrs={"id": "post-created-at_accel", "required": True}
-                        ),
+                attrs={"id": "post-created-at_accel", "required": True}
+            ),
             "acceleration_x": forms.NumberInput(
                 attrs={"id": "post-acceleration-X", "required": True}
             ),
@@ -32,7 +38,7 @@ class AccelerationForm(forms.ModelForm):
             ),
             "acceleration_z": forms.NumberInput(
                 attrs={"id": "post-acceleration-Z", "required": True}
-            )
+            ),
         }
 
 
@@ -42,8 +48,8 @@ class WheelSpeedForm(forms.ModelForm):
         fields = "__all__"
         widgets = {
             "created_at_ws": forms.DateTimeInput(
-                            attrs={"id": "post-created-at_ws", "required": True}
-                        ),
+                attrs={"id": "post-created-at_ws", "required": True}
+            ),
             "wheel_speed_fr": forms.NumberInput(
                 attrs={"id": "post-wheel-speed-fr", "required": True}
             ),
@@ -55,8 +61,9 @@ class WheelSpeedForm(forms.ModelForm):
             ),
             "wheel_speed_bl": forms.NumberInput(
                 attrs={"id": "post-wheel-speed-bl", "required": True}
-            )
+            ),
         }
+
 
 class SuspensionForm(forms.ModelForm):
     class Meta:
@@ -64,8 +71,8 @@ class SuspensionForm(forms.ModelForm):
         fields = "__all__"
         widgets = {
             "created_at_ss": forms.DateTimeInput(
-                            attrs={"id": "post-created-at_ss", "required": True}
-                        ),
+                attrs={"id": "post-created-at_ss", "required": True}
+            ),
             "suspension_fr": forms.NumberInput(
                 attrs={"id": "post-suspension-fr", "required": True}
             ),
@@ -77,7 +84,7 @@ class SuspensionForm(forms.ModelForm):
             ),
             "suspension_bl": forms.NumberInput(
                 attrs={"id": "post-suspension-bl", "required": True}
-            )
+            ),
         }
 
 
@@ -87,11 +94,9 @@ class FuelLevelForm(forms.ModelForm):
         fields = "__all__"
         widgets = {
             "created_at_fl": forms.DateTimeInput(
-                            attrs={"id": "post-created-at_fl", "required": True}
-                        ),
+                attrs={"id": "post-created-at_fl", "required": True}
+            ),
             "current_fuel_level": forms.NumberInput(
                 attrs={"id": "post-current-fuel-level", "required": True}
-            )
+            ),
         }
-
-

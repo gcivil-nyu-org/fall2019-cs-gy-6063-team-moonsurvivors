@@ -1,8 +1,15 @@
 from tastypie.resources import ModelResource
 from tastypie.authorization import Authorization
-from mercury.models import TemperatureSensor,AccelerationSensor,WheelSpeedSensor,SuspensionSensor, FuelLevelSensor
+from mercury.models import (
+    TemperatureSensor,
+    AccelerationSensor,
+    WheelSpeedSensor,
+    SuspensionSensor,
+    FuelLevelSensor,
+)
 
 # TODO check with Dave,
+
 
 class TemperatureSensorResource(ModelResource):
     """This class exposes an API for the TemperatureData object with the resource name

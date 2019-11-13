@@ -13,15 +13,17 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6 justify-content-center">
+            <strong>
             <h1>Simulating Mock Data</h1>
+            </strong>
             {% if form %}
                 <form method="POST" action="" id="TemperatureForm">
                     {% csrf_token %}
                     {% load crispy_forms_tags %}
                     {{ form|crispy }}
-                    <input type="submit" class="submitbutton" name="Continuous" value="Continuous Submission">
-                    <input type="submit" class="submitbutton" name="Once" value="Submit Once">
-                    <input type="submit" class="submitbutton" name="Stop" value="Stop Submission">
+                    <input type="submit" class="submitbutton btn btn-primary" name="Continuous" value="Continuous Submission">
+                    <input type="submit" class="submitbutton btn btn-primary" name="Once" value="Submit Once">
+                    <input type="submit" class="submitbutton btn btn-primary" name="Stop" value="Stop Submission">
                 </form>
             {% endif %}
 
@@ -31,9 +33,9 @@
                     {% csrf_token %}
                     {% load crispy_forms_tags %}
                     {{ form_accel|crispy }}
-                    <input type="submit" class="submitbutton_accel" name="Continuous" value="Continuous Submission">
-                    <input type="submit" class="submitbutton_accel" name="Once" value="Submit Once">
-                    <input type="submit" class="submitbutton_accel" name="Stop" value="Stop Submission">
+                    <input type="submit" class="submitbutton_accel btn btn-primary" name="Continuous" value="Continuous Submission">
+                    <input type="submit" class="submitbutton_accel btn btn-primary" name="Once" value="Submit Once">
+                    <input type="submit" class="submitbutton_accel btn btn-primary" name="Stop" value="Stop Submission">
                 </form>
             {% endif %}
             <h1>Wheel Speed Sensor</h1>
@@ -42,9 +44,9 @@
                     {% csrf_token %}
                     {% load crispy_forms_tags %}
                     {{ form_ws|crispy }}
-                    <input type="submit" class="submitbutton_ws" name="Continuous" value="Continuous Submission">
-                    <input type="submit" class="submitbutton_ws" name="Once" value="Submit Once">
-                    <input type="submit" class="submitbutton_ws" name="Stop" value="Stop Submission">
+                    <input type="submit" class="submitbutton_ws btn btn-primary" name="Continuous" value="Continuous Submission">
+                    <input type="submit" class="submitbutton_ws btn btn-primary" name="Once" value="Submit Once">
+                    <input type="submit" class="submitbutton_ws btn btn-primary" name="Stop" value="Stop Submission">
                 </form>
             {% endif %}
             <h1>Suspension Sensor</h1>
@@ -53,9 +55,9 @@
                     {% csrf_token %}
                     {% load crispy_forms_tags %}
                     {{ form_ss|crispy }}
-                    <input type="submit" class="submitbutton_ss" name="Continuous" value="Continuous Submission">
-                    <input type="submit" class="submitbutton_ss" name="Once" value="Submit Once">
-                    <input type="submit" class="submitbutton_ss" name="Stop" value="Stop Submission">
+                    <input type="submit" class="submitbutton_ss btn btn-primary" name="Continuous" value="Continuous Submission">
+                    <input type="submit" class="submitbutton_ss btn btn-primary" name="Once" value="Submit Once">
+                    <input type="submit" class="submitbutton_ss btn btn-primary" name="Stop" value="Stop Submission">
                 </form>
             {% endif %}
             <h1>Fuel Level Sensor</h1>
@@ -64,9 +66,9 @@
                     {% csrf_token %}
                     {% load crispy_forms_tags %}
                     {{ form_fl|crispy }}
-                    <input type="submit" class="submitbutton_fl" name="Continuous" value="Continuous Submission">
-                    <input type="submit" class="submitbutton_fl" name="Once" value="Submit Once">
-                    <input type="submit" class="submitbutton_fl" name="Stop" value="Stop Submission">
+                    <input type="submit" class="submitbutton_fl btn btn-primary" name="Continuous" value="Continuous Submission">
+                    <input type="submit" class="submitbutton_fl btn btn-primary" name="Once" value="Submit Once">
+                    <input type="submit" class="submitbutton_fl btn btn-primary" name="Stop" value="Stop Submission">
                 </form>
             {% endif %}
         </div>

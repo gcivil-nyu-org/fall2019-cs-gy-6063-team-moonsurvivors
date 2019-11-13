@@ -5,9 +5,11 @@ class TemperatureSensor(models.Model):
     """This model represents the Tempeature sensor that we expect to
     potentially available in the future in the NYU Motorsports
     Racing vehicle."""
+
     created_at = models.DateTimeField()
     # Oil temperature panel, measured in fahrenheit
     temperature = models.FloatField(default=0)
+
 
 class AccelerationSensor(models.Model):
     """This model represents the Acceleration sensors that we expect to
@@ -20,10 +22,12 @@ class AccelerationSensor(models.Model):
     acceleration_y = models.FloatField(default=0)
     acceleration_z = models.FloatField(default=0)
 
+
 class WheelSpeedSensor(models.Model):
     """This model represents the Wheel Speed sensors that we expect to
     potentially available in the future in the NYU Motorsports
     Racing vehicle."""
+
     created_at_ws = models.DateTimeField()
     # Wheel Speed Panel for each of the four wheels
     # measured in meter/second
@@ -31,6 +35,7 @@ class WheelSpeedSensor(models.Model):
     wheel_speed_fl = models.FloatField(default=0)
     wheel_speed_br = models.FloatField(default=0)
     wheel_speed_bl = models.FloatField(default=0)
+
 
 class SuspensionSensor(models.Model):
     """This model represents the Suspension sensors that we expect to
@@ -45,6 +50,7 @@ class SuspensionSensor(models.Model):
     suspension_br = models.FloatField(default=0)
     suspension_bl = models.FloatField(default=0)
 
+
 class FuelLevelSensor(models.Model):
     """This model represents the Fuel Level sensor that we expect to
     potentially available in the future in the NYU Motorsports
@@ -54,5 +60,3 @@ class FuelLevelSensor(models.Model):
     # Fuel Supply Panel
     # measured in liters
     current_fuel_level = models.FloatField(default=0)
-
-
