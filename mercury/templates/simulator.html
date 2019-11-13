@@ -37,7 +37,7 @@
                 </form>
             {% endif %}
             <h1>Wheel Speed Sensor</h1>
-        {% if form_ws %}
+            {% if form_ws %}
                 <form method="POST" action="" id="WheelSpeedForm">
                     {% csrf_token %}
                     {% load crispy_forms_tags %}
@@ -45,6 +45,17 @@
                     <input type="submit" class="submitbutton_ws" name="Continuous" value="Continuous Submission">
                     <input type="submit" class="submitbutton_ws" name="Once" value="Submit Once">
                     <input type="submit" class="submitbutton_ws" name="Stop" value="Stop Submission">
+                </form>
+            {% endif %}
+            <h1>Suspension Sensor</h1>
+            {% if form_ss %}
+                <form method="POST" action="" id="SuspensionForm">
+                    {% csrf_token %}
+                    {% load crispy_forms_tags %}
+                    {{ form_ss|crispy }}
+                    <input type="submit" class="submitbutton_ss" name="Continuous" value="Continuous Submission">
+                    <input type="submit" class="submitbutton_ss" name="Once" value="Submit Once">
+                    <input type="submit" class="submitbutton_ss" name="Stop" value="Stop Submission">
                 </form>
             {% endif %}
 

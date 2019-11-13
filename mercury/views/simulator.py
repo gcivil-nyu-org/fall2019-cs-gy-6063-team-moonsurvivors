@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import HttpResponse
 
-from ..forms import TemperatureForm, AccelerationForm, WheelSpeedForm
-from mercury.models import TemperatureSensor, AccelerationSensor, WheelSpeedSensor
+from ..forms import TemperatureForm, AccelerationForm, WheelSpeedForm, SuspensionForm
+from mercury.models import TemperatureSensor, AccelerationSensor, WheelSpeedSensor, SuspensionSensor
 import datetime
 
 class SimulatorView(TemplateView):
@@ -44,6 +44,22 @@ class SimulatorView(TemplateView):
             )
             ws_data.save()
 
+        elif request.POST.get("created_at_ss"):
+            post_created_at_ss = request.POST.get("created_at_ss")
+            post_suspension_fr = request.POST.get("suspension_fr")
+            post_suspension_fl = request.POST.get("suspension_fl")
+            post_suspension_br = request.POST.get("suspension_br")
+            post_suspension_bl = request.POST.get("suspension_bl")
+
+            ss_data = WheelSpeedSensor(
+                created_at_ss=post_created_at_ss,
+                suspension_fr=post_suspension_fr,
+                suspension_fl=post_suspension_fl,
+                suspension_br=post_suspension_br,
+                suspension_bl=post_suspension_bl,
+            )
+            ss_data.save()
+
 
         else:
             post_created_at = request.POST.get("created_at")
@@ -55,17 +71,17 @@ class SimulatorView(TemplateView):
             )
             temp_data.save()
 
-
-
         return HttpResponse(status=201)
 
     def get(self, request, *args, **kwargs):
         """This method will render the Simulator form when GET is used"""
-        form_ws = WheelSpeedForm(initial={"created_at_ws": datetime.datetime.now()})
         form = TemperatureForm(initial={"created_at": datetime.datetime.now()})
         form_accel= AccelerationForm(initial={"created_at_accel": datetime.datetime.now()})
+        form_ws = WheelSpeedForm(initial={"created_at_ws": datetime.datetime.now()})
+        form_ss = WheelSpeedForm(initial={"created_at_ss": datetime.datetime.now()})
 
-        context = {"form_ws": form_ws, "form":form,"form_accel": form_accel}
+
+        context = {"form_ss": form_ss, "form_ws": form_ws, "form_accel": form_accel,"form":form}
 
         return render(request, self.template_name,context)
 
