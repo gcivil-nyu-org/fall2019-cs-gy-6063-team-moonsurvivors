@@ -1,5 +1,5 @@
 from django import forms
-from mercury.models import TemperatureSensor, AccelerationSensor
+from mercury.models import TemperatureSensor, AccelerationSensor,WheelSpeedSensor
 
 # for our slider
 from django.forms.widgets import NumberInput
@@ -40,6 +40,38 @@ class AccelerationForm(forms.ModelForm):
                 attrs={"id": "post-acceleration-Z", "required": True}
             )
         }
+
+class WheelSpeedForm(forms.ModelForm):
+    class Meta:
+        model = WheelSpeedSensor
+        fields = "__all__"
+        widgets = {
+            "created_at_ws": forms.DateTimeInput(
+                            attrs={"id": "post-created-at_ws", "required": True}
+                        ),
+
+            "wheel_speed_fr": forms.NumberInput(
+                attrs={"id": "post-wheel-speed-fr", "required": True}
+            ),
+            "wheel_speed_fl": forms.NumberInput(
+                attrs={"id": "post-wheel-speed-fl", "required": True}
+            ),
+            "wheel_speed_br": forms.NumberInput(
+                attrs={"id": "post-wheel-speed-br", "required": True}
+            ),
+            "wheel_speed_bl": forms.NumberInput(
+                attrs={"id": "post-wheel-speed-bl", "required": True}
+            ),
+        }
+
+
+
+
+
+
+
+
+
 
 # class SimulatorForm(forms.ModelForm):
 #     class Meta:

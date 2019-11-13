@@ -5,9 +5,7 @@ class TemperatureSensor(models.Model):
     """This model represents the Tempeature sensor that we expect to
     potentially available in the future in the NYU Motorsports
     Racing vehicle."""
-
     created_at = models.DateTimeField()
-
     # Oil temperature panel, measured in fahrenheit
     temperature = models.FloatField(default=0)
 
@@ -17,7 +15,6 @@ class AccelerationSensor(models.Model):
     Racing vehicle."""
 
     created_at_accel = models.DateTimeField()
-
     # Acceleration Panel, measured in meter/second
     acceleration_x = models.FloatField(default=0)
     acceleration_y = models.FloatField(default=0)
@@ -28,7 +25,7 @@ class WheelSpeedSensor(models.Model):
     potentially available in the future in the NYU Motorsports
     Racing vehicle."""
 
-    created_at = models.DateTimeField()
+    created_at_ws = models.DateTimeField()
 
     # Wheel Speed Panel for each of the four wheels
     # measured in meter/second

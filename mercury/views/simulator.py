@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 from django.http import HttpResponse
 
 from ..forms import TemperatureForm, AccelerationForm
-from mercury.models import TemperatureSensor, AccelerationSensor
+from mercury.models import TemperatureSensor, AccelerationSensor, WheelSpeedSensor
 import datetime
 
 class SimulatorView(TemplateView):
@@ -27,6 +27,24 @@ class SimulatorView(TemplateView):
             )
             accel_data.save()
 
+        elif request.POST.get("created_at_ws"):
+
+            post_created_at_ws = request.POST.get("created_at_ws")
+            post_wheel_speed_fr = request.POST.get("wheel_speed_fr")
+            post_wheel_speed_fl = request.POST.get("wheel_speed_fl")
+            post_wheel_speed_br = request.POST.get("wheel_speed_br")
+            post_wheel_speed_bl = request.POST.get("wheel_speed_bl")
+
+            ws_data = WheelSpeedSensor(
+                created_at_ws=post_created_at_ws,
+                wheel_speed_fr=post_wheel_speed_fr,
+                wheel_speed_fl=post_wheel_speed_fl,
+                wheel_speed_br=post_wheel_speed_br,
+                wheel_speed_bl=post_wheel_speed_bl,
+            )
+            ws_data.save()
+
+
         else:
             post_created_at = request.POST.get("created_at")
             post_temperature = request.POST.get("temperature")
@@ -36,6 +54,8 @@ class SimulatorView(TemplateView):
                 temperature=post_temperature,
             )
             temp_data.save()
+
+
 
         return HttpResponse(status=201)
 
