@@ -49,7 +49,6 @@ class WheelSpeedForm(forms.ModelForm):
             "created_at_ws": forms.DateTimeInput(
                             attrs={"id": "post-created-at_ws", "required": True}
                         ),
-
             "wheel_speed_fr": forms.NumberInput(
                 attrs={"id": "post-wheel-speed-fr", "required": True}
             ),
@@ -61,7 +60,7 @@ class WheelSpeedForm(forms.ModelForm):
             ),
             "wheel_speed_bl": forms.NumberInput(
                 attrs={"id": "post-wheel-speed-bl", "required": True}
-            ),
+            )
         }
 
 

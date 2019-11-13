@@ -13,7 +13,7 @@ class SimulatorView(TemplateView):
         """Used by AJAX method in the simulator.js file to save data
         from the simulator UI."""
 
-        if request.POST.get("acceleration_x"):
+        if request.POST.get("created_at_accel"):
             post_created_at_accel = request.POST.get("created_at_accel")
             post_acceleration_x = request.POST.get("acceleration_x")
             post_acceleration_y = request.POST.get("acceleration_y")
@@ -61,14 +61,13 @@ class SimulatorView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         """This method will render the Simulator form when GET is used"""
-        form = TemperatureForm(initial={"created_at": datetime.datetime.now()})
-        form_accel = AccelerationForm(initial={"created_at_accel": datetime.datetime.now()})
         form_ws = WheelSpeedForm(initial={"created_at_ws": datetime.datetime.now()})
+        form = TemperatureForm(initial={"created_at": datetime.datetime.now()})
+        form_accel= AccelerationForm(initial={"created_at_accel": datetime.datetime.now()})
 
-        context = { "form":form,"form_accel": form_accel,"form_ws ":form_ws}
+        context = {"form_ws": form_ws, "form":form,"form_accel": form_accel}
 
-
-        return render(request, self.template_name, context)
+        return render(request, self.template_name,context)
 
 
 # class SimulatorView(TemplateView):
