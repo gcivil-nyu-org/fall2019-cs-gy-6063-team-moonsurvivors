@@ -39,7 +39,7 @@ class SuspensionSensor(models.Model):
     potentially available in the future in the NYU Motorsports
     Racing vehicle."""
 
-    created_at = models.DateTimeField()
+    created_at_ss = models.DateTimeField()
     # Suspension/Compression Panel for each of the four wheels
     # measured in centimeter
     suspension_fr = models.FloatField(default=0)
@@ -52,7 +52,7 @@ class FuelLevelSensor(models.Model):
     potentially available in the future in the NYU Motorsports
     Racing vehicle."""
 
-    created_at = models.DateTimeField()
+    created_at_fl = models.DateTimeField()
 
     # Fuel Supply Panel
     # measured in liters
