@@ -58,10 +58,17 @@
                     <input type="submit" class="submitbutton_ss" name="Stop" value="Stop Submission">
                 </form>
             {% endif %}
-
-
-
-
+            <h1>Fuel Level Sensor</h1>
+            {% if form_fl %}
+                <form method="POST" action="" id="FuelLevelForm">
+                    {% csrf_token %}
+                    {% load crispy_forms_tags %}
+                    {{ form_fl|crispy }}
+                    <input type="submit" class="submitbutton_fl" name="Continuous" value="Continuous Submission">
+                    <input type="submit" class="submitbutton_fl" name="Once" value="Submit Once">
+                    <input type="submit" class="submitbutton_fl" name="Stop" value="Stop Submission">
+                </form>
+            {% endif %}
         </div>
     </div>
 </div>
