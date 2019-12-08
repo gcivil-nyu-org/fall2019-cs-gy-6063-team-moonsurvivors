@@ -22,6 +22,19 @@ input#id_can_msg{
   display: block;
 }
 
+#footer {
+    background-color: #b0b0b0;
+}
+#footer p{
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+
+    /*text-align: center;*/
+    /*this above textalig is only for the homepage*/
+
+}
+
 .col-centered{
   float: none;
   margin: 0 auto;
